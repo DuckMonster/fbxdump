@@ -133,26 +133,28 @@ void dump_property(Fbx_Property* prop)
 
 void dump_node(Fbx_Node* node)
 {
-	dump("'%.*s'\n", node->name_len, node->name);
+	dump("'%.*s':\n", node->name_len, node->name);
+	dump("{\n");
+	current_indent++;
+
 	if (node->property_count > 0)
 	{
-		dump("{\n");
-		current_indent++;
-
 		for(u32 i=0; i<node->property_count; ++i)
 		{
 			dump_property(node->properties + i);
 			dump("\n");
 		}
 
-		current_indent--;
-		dump("}\n");
+		if (node->child)
+			dump("\n");
 	}
 
-	current_indent++;
 	if (node->child)
 		dump_node(node->child);
+
 	current_indent--;
+	dump("}\n");
+
 	if (node->next)
 		dump_node(node->next);
 }

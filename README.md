@@ -93,7 +93,7 @@ Here's an snippet of the output from the test fbx file:
 ```
 
 So here the lonely quoted things are nodes, `('Geometry', Vertices', 'PolygonVertexIndex' etc.)`
-The data in-between the brackets {} are properties as following:
+The data in-between the brackets {} are, in order:
 1. The properties of the node. It will display both the type and display-value of the property (note that in the actual file these aren't represented as strings).
 2. The children of the node, starting with the first, then going through each sibling (ther order is specific).
 

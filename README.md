@@ -9,85 +9,92 @@ I've provided a pre-built exe with a test fbx file (just a default Blender scene
 Here's an snippet of the output from the test fbx file:
 ```
 ...
-'Geometry'
+'Geometry':
 {
 	(Long) 876144110
 	(String) 'Cube.002'
 	(String) 'Mesh'
-}
-	'Properties70'
-	'GeometryVersion'
+	
+	'Properties70':
+	{
+	}
+	'GeometryVersion':
 	{
 		(Int) 124
 	}
-	'Vertices'
+	'Vertices':
 	{
 		(Double[]) -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, 1.000000, -1.000000, 1.000000, -1.000000, -1.000000, 1.000000, 1.000000, 1.000000, -1.000000, -1.000000, 1.000000, -1.000000, 1.000000, 1.000000, 1.000000, -1.000000, 1.000000, 1.000000, 1.000000, 
 	}
-	'PolygonVertexIndex'
+	'PolygonVertexIndex':
 	{
 		(Int[]) 0, 1, 3, -3, 2, 3, 7, -7, 6, 7, 5, -5, 4, 5, 1, -1, 2, 6, 4, -1, 7, 3, 1, -6, 
 	}
-	'Edges'
+	'Edges':
 	{
 		(Int[]) 0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 15, 
 	}
-	'LayerElementNormal'
+	'LayerElementNormal':
 	{
 		(Int) 0
-	}
-		'Version'
+		
+		'Version':
 		{
 			(Int) 101
 		}
-		'Name'
+		'Name':
 		{
 			(String) ''
 		}
-		'MappingInformationType'
+		'MappingInformationType':
 		{
 			(String) 'ByPolygonVertex'
 		}
-		'ReferenceInformationType'
+		'ReferenceInformationType':
 		{
 			(String) 'Direct'
 		}
-		'Normals'
+		'Normals':
 		{
 			(Double[]) -1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 1.000000, 
 		}
-	'LayerElementUV'
+	}
+	'LayerElementUV':
 	{
 		(Int) 0
-	}
-		'Version'
+		
+		'Version':
 		{
 			(Int) 101
 		}
-		'Name'
+		'Name':
 		{
 			(String) 'UVMap'
 		}
-		'MappingInformationType'
+		'MappingInformationType':
 		{
 			(String) 'ByPolygonVertex'
 		}
-		'ReferenceInformationType'
+		'ReferenceInformationType':
 		{
 			(String) 'IndexToDirect'
 		}
-		'UV'
+		'UV':
 		{
 			(Double[]) 0.625000, 1.000000, 0.375000, 0.250000, 0.375000, 1.000000, 0.125000, 0.500000, 0.625000, 0.250000, 0.875000, 0.500000, 0.375000, 0.000000, 0.125000, 0.750000, 0.625000, 0.000000, 0.875000, 0.750000, 0.375000, 0.500000, 0.625000, 0.500000, 0.375000, 0.750000, 0.625000, 0.750000, 
 		}
-		'UVIndex'
+		'UVIndex':
 		{
 			(Int[]) 6, 8, 4, 1, 1, 4, 11, 10, 10, 11, 13, 12, 12, 13, 0, 2, 3, 10, 12, 7, 11, 5, 9, 13, 
 		}
+	}
+}
 ...
 ```
 
-So here the lonely quoted things are nodes, ('Geometry', Vertices', 'PolygonVertexIndex' etc.)
-The data in-between the brackets {} are properties of the node. It will display both the type and display-value of the property (note that in the actual file these aren't represented as strings).
+So here the lonely quoted things are nodes, `('Geometry', Vertices', 'PolygonVertexIndex' etc.)`
+The data in-between the brackets {} are properties as following:
+1. The properties of the node. It will display both the type and display-value of the property (note that in the actual file these aren't represented as strings).
+2. The children of the node, starting with the first, then going through each sibling (ther order is specific).
 
-If a node is indented, it means its a child of the previous node, otherwise its a sibling of the previous node.
+Note that these aren't JSON files, FBX files can't really be represented in JSON in a clean way. Its just the formatting that is a bit similar, because they are quite readable.

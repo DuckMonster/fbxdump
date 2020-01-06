@@ -3,4 +3,8 @@ build/
 *.sublime-project
 *.sublime-workspace
 *.user
-bin/
+bin/Release/*
+bin/Debug/*
+
+!bin/Release/*.exe
+!bin/Release/*.fbx
